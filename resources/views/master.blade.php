@@ -34,10 +34,7 @@
 -->
 </body>
 <style >
-	.navbar-top{
-		height: 100px;
-		padding-top: 20px;
-	}
+	
 	.custom-login{
 		height: 500px;
 		padding-top: 100px;
