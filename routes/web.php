@@ -20,7 +20,17 @@ Route::get('/login', function () {
     return view('login');
 }); 
 
+Route::get('/logout', function () {
+    Session::forget('user');
+    return redirect('login');
+}); 
+
+
 Route::post('/login',[UserController::class,'login'])->name('login');
 Route::get('/',[ProductsController::class,'index'])->name('index');
+Route::get('/details/{id}',[ProductsController::class,'details'])->name('details');
+Route::get('/search',[ProductsController::class,'search'])->name('search');
+Route::post('/add to cart',[ProductsController::class,'addToCart'])->name('addToCart');
+
 
 
