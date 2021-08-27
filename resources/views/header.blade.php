@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Ecommerce</a>
+      <a class="navbar-brand" href="/">Gralvine Shopify</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,7 +36,7 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">cart({{ $total }})</a></li>
+        <li><a href="/cartlist">cart({{ $total }})</a></li>
         
         @if(Session::has('user'))
         <li class="dropdown">
