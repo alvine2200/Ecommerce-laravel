@@ -7,6 +7,7 @@ use App\Models\Products;
 use App\Models\cart;
 use Session;
 use Illuminate\Support\Facades\DB;
+use App\Models\order;
 
 class ProductsController extends Controller
 {
@@ -85,6 +86,44 @@ class ProductsController extends Controller
  
         return view('ordernow',['total'=>$total]);
     
+    }
+
+    function orderplacement(Request $request)
+    {
+        $userId=Session::get('user')['id'];
+        $allcart=cart::where('users_id',$userId)->get();
+        foreach($allcart as $cart)
+        {
+            $order=new order;
+            $order->products_id=$cart['products_id'];
+            $order->users_id=$cart['users_id'];
+            $order->status="pending";
+            $order->payment_method=$request->payment;
+            $order->payment_status="pending";
+            $order->address=$request->address;
+            $order->save();
+
+            cart::where('users_id',$userId)->delete();
+
+
+        }
+
+         $request->input();
+        return redirect('/');
+    }
+
+    function myorders()
+    {
+
+        $userId=Session::get('user')['id'];
+        $orders=$products=DB::table('orders')
+        ->join('products','orders.products_id','=','products.id')
+        ->where('orders.users_id', $userId)
+        
+        ->get();
+            
+        return view('myorders',['orders'=>$orders]);
+        
     }
 
 }

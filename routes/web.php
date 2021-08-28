@@ -34,6 +34,10 @@ Route::post('/add to cart',[ProductsController::class,'addToCart'])->name('addTo
 Route::get('/cartlist',[ProductsController::class,'cartlist'])->name('cartlist');
 Route::get('/removeCart/{id}',[ProductsController::class,'removeCart'])->name('removeCart');
 Route::get('/ordernow',[ProductsController::class,'ordernow'])->name('ordernow');
+Route::post('/orderplacement',[ProductsController::class,'orderplacement'])->name('orderplacement');
+Route::get('/myorders',[ProductsController::class,'myorders'])->name('myorders');
+
+
 
 
 
